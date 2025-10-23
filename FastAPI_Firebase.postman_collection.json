@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "FastAPI Firebase Task API",
+    "_postman_id": "f3a9f60e-0b57-4ad3-9b65-firebase-fastapi",
+    "description": "Postman collection for FastAPI Firebase-based task management app",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\": \"test123\",\n    \"full_name\": \"Test User\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/signup",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["signup"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\": \"test123\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/login",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["login"]
+        }
+      }
+    },
+    {
+      "name": "Get User Profile (/user/me)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{idToken}}" }],
+        "url": {
+          "raw": "http://127.0.0.1:8000/user/me",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["user", "me"]
+        }
+      }
+    },
+    {
+      "name": "Update User (/user/update)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{idToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"full_name\": \"Updated User\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/user/update",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["user", "update"]
+        }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{idToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Test Task\",\n    \"description\": \"This is a test task\",\n    \"status\": \"pending\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["tasks", ""]
+        }
+      }
+    },
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{idToken}}" }],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["tasks", ""]
+        }
+      }
+    },
+    {
+      "name": "Get Single Task",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{idToken}}" }],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/{{task_id}}",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["tasks", "{{task_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{idToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Updated Test Task\",\n    \"description\": \"Updated description\",\n    \"status\": \"completed\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/{{task_id}}",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["tasks", "{{task_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{idToken}}" }],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/{{task_id}}",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["tasks", "{{task_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "idToken", "value": "" },
+    { "key": "task_id", "value": "" }
+  ]
+}
